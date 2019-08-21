@@ -76,6 +76,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"add_data")
+                .setName("add_data")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -83,7 +85,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -200,6 +201,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"add_create")
+                .setName("add_create")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -207,7 +210,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -266,8 +268,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.UI.Group")
                 .setHost(host,"添加Group")
-                .setLeft("6.666666666666667em")
-                .setTop("34.166666666666664em")
+                .setLeft("5.833333333333333em")
+                .setTop("32.5em")
                 .setWidth("21.666666666666668em")
                 .setHeight("12.5em")
                 .setCaption("添加")
@@ -474,7 +476,7 @@ xui.Class('App', 'xui.Module',{
                 .setTop("11.666666666666666em")
                 .setWidth("21.666666666666668em")
                 .setHeight("12.5em")
-                .setCaption("添加")
+                .setCaption("添加123456")
             );
             
             host.add_from.append(
