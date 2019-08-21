@@ -19,7 +19,42 @@ xui.Class('App', 'xui.Module',{
         iniComponents : function(){
             // [[Code created by CrossUI RAD Studio
             var host=this, children=[], append=function(child){children.push(child.get(0));};
-
+            
+            append(
+                xui.create("xui.UI.Panel")
+                .setHost(host,"xui_ui_panel4")
+                .setDock("none")
+                .setLeft("6.666666666666667em")
+                .setTop("5em")
+                .setWidth("24.166666666666668em")
+                .setHeight("25.833333333333332em")
+                .setCaption("数据列表")
+            );
+            
+            host.xui_ui_panel4.append(
+                xui.create("xui.UI.TreeGrid")
+                .setHost(host,"xui_ui_treegrid2")
+                .setDirtyMark(false)
+                .setLeft("0em")
+                .setTop("0em")
+                .setEditable(true)
+                .setRowHandler(false)
+                .setHeader([
+                    {
+                        "id":"label",
+                        "caption":"label",
+                        "type":"label",
+                        "width":"12em"
+                    },
+                    {
+                        "id":"input",
+                        "caption":"input",
+                        "type":"input",
+                        "width":"12em"
+                    }
+                ])
+            );
+            
             return children;
             // ]]Code created by CrossUI RAD Studio
         },
