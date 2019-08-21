@@ -314,7 +314,7 @@ xui.Class('App', 'xui.Module',{
                         "type":"control",
                         "target":"xui_ui_treegrid2",
                         "args":[
-                            ""
+                            "{-1}"
                         ],
                         "method":"setActiveRow",
                         "conditions":[
