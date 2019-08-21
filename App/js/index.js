@@ -96,15 +96,15 @@ xui.Class('App', 'xui.Module',{
                 .setHeader([
                     {
                         "id":"label",
-                        "caption":"label",
+                        "caption":"标题",
                         "type":"label",
-                        "width":"12em"
+                        "width":"11em"
                     },
                     {
                         "id":"input",
-                        "caption":"input",
-                        "type":"input",
-                        "width":"12em"
+                        "caption":"内容",
+                        "type":"label",
+                        "width":"11em"
                     }
                 ])
             );
