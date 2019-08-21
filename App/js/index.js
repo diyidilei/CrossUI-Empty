@@ -176,12 +176,13 @@ xui.Class('App', 'xui.Module',{
             "onReady":[
                 {
                     "desc":"加载数据",
-                    "type":"control",
-                    "target":"api_1",
-                    "args":[ ],
-                    "method":"invoke",
-                    "onOK":0,
-                    "onKO":1,
+                    "type":"other",
+                    "target":"msg",
+                    "args":[
+                        "11111111",
+                        "加载数据"
+                    ],
+                    "method":"pop",
                     "okFlag":"_DI_succeed",
                     "koFlag":"_DI_fail"
                 }
