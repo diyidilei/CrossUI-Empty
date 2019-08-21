@@ -110,6 +110,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"更新数据")
+                .setName("更新数据")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -294,8 +295,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.UI.Group")
                 .setHost(host,"更新Group")
-                .setLeft("34.166666666666664em")
-                .setTop("25em")
+                .setLeft("33.333333333333336em")
+                .setTop("28.333333333333332em")
                 .setWidth("21.666666666666668em")
                 .setHeight("12.5em")
                 .setCaption("更新")
