@@ -76,8 +76,6 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"add_data")
-                .setName("add_data")
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -85,12 +83,11 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
-                        "action":"create",
-                        "key":"",
-                        "value":""
+                        "action":"create"
                     }
                 })
                 .beforeData([
@@ -131,8 +128,8 @@ xui.Class('App', 'xui.Module',{
             
             append(
                 xui.create("xui.APICaller")
-                .setHost(host,"更新数据")
-                .setName("更新数据")
+                .setHost(host,"updata")
+                .setName("updata")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
@@ -172,8 +169,7 @@ xui.Class('App', 'xui.Module',{
             
             append(
                 xui.create("xui.APICaller")
-                .setHost(host,"删除")
-                .setName("删除")
+                .setHost(host,"del_data")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -390,7 +386,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"调用api",
                         "type":"control",
-                        "target":"更新数据",
+                        "target":"add_data",
                         "args":[ ],
                         "method":"invoke",
                         "okFlag":"_DI_succeed",
