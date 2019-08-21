@@ -22,8 +22,8 @@ xui.Class('App', 'xui.Module',{
             
             append(
                 xui.create("xui.APICaller")
-                .setHost(host,"api_1")
-                .setName("api_1")
+                .setHost(host,"初始化数据")
+                .setName("初始化数据")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setResponseCallback([
                     {
@@ -56,7 +56,8 @@ xui.Class('App', 'xui.Module',{
                         ],
                         "onOK":2,
                         "return":false
-                    }
+                    },
+                    "_添加数据_beforedata"
                 ])
                 .onError([
                     {
@@ -70,6 +71,20 @@ xui.Class('App', 'xui.Module',{
                         "method":"pop"
                     }
                 ])
+            );
+            
+            append(
+                xui.create("xui.APICaller")
+                .setHost(host,"添加数据")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"create",
+                        "key":"",
+                        "value":""
+                    }
+                })
             );
             
             append(
@@ -107,6 +122,47 @@ xui.Class('App', 'xui.Module',{
                         "width":"11em"
                     }
                 ])
+            );
+            
+            append(
+                xui.create("xui.UI.HTMLButton")
+                .setHost(host,"xui_ui_htmlbutton7")
+                .setLeft("40em")
+                .setTop("5.833333333333333em")
+                .setWidth("9.833333333333334em")
+                .setHeight("2.6666666666666665em")
+                .setCaption("删除")
+            );
+            
+            append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"xui_ui_input26")
+                .setDirtyMark(false)
+                .setLeft("30.833333333333332em")
+                .setTop("15em")
+                .setWidth("18em")
+                .setLabelSize("8em")
+                .setLabelCaption("标题")
+            );
+            
+            append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"xui_ui_input27")
+                .setDirtyMark(false)
+                .setLeft("30.833333333333332em")
+                .setTop("17.5em")
+                .setWidth("18em")
+                .setLabelSize("8em")
+                .setLabelCaption("内容")
+            );
+            
+            append(
+                xui.create("xui.UI.Button")
+                .setHost(host,"xui_ui_button22")
+                .setDirtyMark(false)
+                .setLeft("40.833333333333336em")
+                .setTop("20.833333333333332em")
+                .setCaption("添加数据")
             );
             
             return children;
@@ -178,7 +234,7 @@ xui.Class('App', 'xui.Module',{
                 {
                     "desc":"获取数据",
                     "type":"control",
-                    "target":"api_1",
+                    "target":"初始化数据",
                     "args":[ ],
                     "method":"invoke",
                     "okFlag":"_DI_succeed",
@@ -187,6 +243,26 @@ xui.Class('App', 'xui.Module',{
                     "onKO":1
                 }
             ]
+        },
+        /**
+         * 在得到数据之前调用.  返回false可以阻止进一步动作
+         * @method beforeData [xui.APICaller event]
+         * @param {xui} profile .Profile
+         * @param {Object} rspData , 从远程调用返回的数据
+         * @param {} requestId  String
+        */
+        _添加数据_beforedata:function(profile, rspData, requestId){
+            var ns = this, uictrl = profile.boxing();
+        },
+        /**
+         * 在出现错误后调用
+         * @method onError [xui.APICaller event]
+         * @param {xui} profile .Profile
+         * @param {Object} rspData , 从远程调用返回的数据
+         * @param {} requestId  String
+        */
+        _添加数据_onerror:function(profile, rspData, requestId){
+            var ns = this, uictrl = profile.boxing();
         }
         /*,
         // To determine how properties affects this module
