@@ -284,6 +284,15 @@ xui.Class('App', 'xui.Module',{
                         "onKO":1
                     },
                     {
+                        "desc":"动作 6",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{page.add_group.getSetFormValues()}"
+                        ],
+                        "method":"log"
+                    },
+                    {
                         "desc":"添加数据",
                         "type":"control",
                         "target":"xui_ui_treegrid2",
