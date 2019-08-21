@@ -191,10 +191,11 @@ xui.Class('App', 'xui.Module',{
             host.xui_ui_group1.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"xui_ui_input3")
+                .setRequired(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
                 .setTop("0.9166666666666666em")
-                .setWidth("18em")
+                .setWidth("19.666666666666668em")
                 .setLabelSize("8em")
                 .setLabelCaption("标题")
             );
@@ -202,10 +203,11 @@ xui.Class('App', 'xui.Module',{
             host.xui_ui_group1.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"xui_ui_input4")
+                .setRequired(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
                 .setTop("4.25em")
-                .setWidth("18em")
+                .setWidth("19.666666666666668em")
                 .setLabelSize("8em")
                 .setLabelCaption("内容")
             );
