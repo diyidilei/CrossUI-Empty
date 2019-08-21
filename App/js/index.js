@@ -92,7 +92,8 @@ xui.Class('App', 'xui.Module',{
                         "type":"other",
                         "target":"msg",
                         "args":[
-                            "{args[1].error.message}"
+                            "{args[1].error.message}",
+                            "111111111111"
                         ],
                         "method":"pop",
                         "conditions":[
@@ -144,6 +145,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"删除")
+                .setName("删除")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -243,7 +245,7 @@ xui.Class('App', 'xui.Module',{
                         "type":"control",
                         "target":"添加Group",
                         "args":[ ],
-                        "method":"checkRequired",
+                        "method":"checkValid",
                         "event":1
                     },
                     {
