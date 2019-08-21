@@ -76,6 +76,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"添加数据")
+                .setName("添加数据")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -233,6 +234,7 @@ xui.Class('App', 'xui.Module',{
             host.添加Group.append(
                 xui.create("xui.UI.Button")
                 .setHost(host,"xui_ui_button4")
+                .setDirtyMark(false)
                 .setLeft("6.583333333333333em")
                 .setTop("7.583333333333333em")
                 .setWidth("7em")
@@ -262,7 +264,7 @@ xui.Class('App', 'xui.Module',{
                         "type":"control",
                         "target":"xui_ui_treegrid2",
                         "args":[
-                            "{page.xui_ui_panel4.getSetFormValues()}",
+                            "{page.xui_ui_panel4.getUpdateFormValues()}",
                             null,
                             null,
                             false
