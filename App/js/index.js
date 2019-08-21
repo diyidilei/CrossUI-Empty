@@ -76,7 +76,6 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"添加数据")
-                .setName("添加数据")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -234,7 +233,6 @@ xui.Class('App', 'xui.Module',{
             host.添加Group.append(
                 xui.create("xui.UI.Button")
                 .setHost(host,"xui_ui_button4")
-                .setDirtyMark(false)
                 .setLeft("6.583333333333333em")
                 .setTop("7.583333333333333em")
                 .setWidth("7em")
@@ -269,7 +267,14 @@ xui.Class('App', 'xui.Module',{
                             null,
                             false
                         ],
-                        "method":"insertRows"
+                        "method":"insertRows",
+                        "conditions":[
+                            {
+                                "left":"{temp.okData}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ]
                     },
                     {
                         "desc":"清除表单",
