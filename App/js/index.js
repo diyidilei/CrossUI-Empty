@@ -112,11 +112,27 @@ xui.Class('App', 'xui.Module',{
                         "return":false
                     }
                 ])
+                .onError([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"callback",
+                        "args":[
+                            "{page.functions.onerror}",
+                            undefined,
+                            undefined,
+                            "{args[1]}"
+                        ],
+                        "method":"call"
+                    }
+                ])
             );
             
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"更新数据")
+                .setName("更新数据")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -124,7 +140,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -157,6 +172,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"删除")
+                .setName("删除")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
