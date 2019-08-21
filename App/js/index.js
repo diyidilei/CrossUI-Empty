@@ -201,8 +201,6 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"add_create")
-                .setName("add_create")
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -210,6 +208,7 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
