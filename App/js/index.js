@@ -136,34 +136,78 @@ xui.Class('App', 'xui.Module',{
             );
             
             append(
-                xui.create("xui.UI.Input")
-                .setHost(host,"xui_ui_input26")
+                xui.create("xui.UI.Group")
+                .setHost(host,"xui_ui_group1")
+                .setLeft("32.5em")
+                .setTop("10.833333333333334em")
+                .setWidth("21.666666666666668em")
+                .setHeight("12.5em")
+                .setCaption("添加")
+            );
+            
+            host.xui_ui_group1.append(
+                xui.create("xui.UI.Button")
+                .setHost(host,"xui_ui_button4")
                 .setDirtyMark(false)
-                .setLeft("30.833333333333332em")
-                .setTop("15em")
+                .setLeft("6.583333333333333em")
+                .setTop("7.583333333333333em")
+                .setWidth("7em")
+                .setCaption("添加")
+                .onClick([
+                    {
+                        "desc":"表单验证",
+                        "type":"control",
+                        "target":"xui_ui_group1",
+                        "args":[ ],
+                        "method":"checkValid",
+                        "event":1
+                    },
+                    {
+                        "desc":"调用api",
+                        "type":"control",
+                        "target":"添加数据",
+                        "args":[ ],
+                        "method":"invoke",
+                        "onOK":0,
+                        "onKO":1,
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail"
+                    },
+                    {
+                        "desc":"添加行",
+                        "type":"control",
+                        "target":"xui_ui_treegrid2",
+                        "args":[
+                            undefined,
+                            null,
+                            null,
+                            false
+                        ],
+                        "method":"insertRows"
+                    }
+                ])
+            );
+            
+            host.xui_ui_group1.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"xui_ui_input3")
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("0.9166666666666666em")
                 .setWidth("18em")
                 .setLabelSize("8em")
                 .setLabelCaption("标题")
             );
             
-            append(
+            host.xui_ui_group1.append(
                 xui.create("xui.UI.Input")
-                .setHost(host,"xui_ui_input27")
+                .setHost(host,"xui_ui_input4")
                 .setDirtyMark(false)
-                .setLeft("30.833333333333332em")
-                .setTop("17.5em")
+                .setLeft("-0.08333333333333333em")
+                .setTop("4.25em")
                 .setWidth("18em")
                 .setLabelSize("8em")
                 .setLabelCaption("内容")
-            );
-            
-            append(
-                xui.create("xui.UI.Button")
-                .setHost(host,"xui_ui_button22")
-                .setDirtyMark(false)
-                .setLeft("40.833333333333336em")
-                .setTop("20.833333333333332em")
-                .setCaption("添加数据")
             );
             
             return children;
