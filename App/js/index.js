@@ -288,9 +288,10 @@ xui.Class('App', 'xui.Module',{
                         "type":"other",
                         "target":"msg",
                         "args":[
+                            "fasdf",
                             "{page.add_group.getSetFormValues()}"
                         ],
-                        "method":"log"
+                        "method":"pop"
                     },
                     {
                         "desc":"添加数据",
