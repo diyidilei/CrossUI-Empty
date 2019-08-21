@@ -75,7 +75,9 @@ xui.Class('App', 'xui.Module',{
             
             append(
                 xui.create("xui.APICaller")
-                .setHost(host,"添加数据")
+                .setHost(host,"add_data")
+                .setName("add_data")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -83,7 +85,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -278,7 +279,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"调用api",
                         "type":"control",
-                        "target":"添加数据",
+                        "target":"add_data",
                         "args":[ ],
                         "method":"invoke",
                         "okFlag":"_DI_succeed",
