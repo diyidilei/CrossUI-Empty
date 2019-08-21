@@ -76,14 +76,11 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"添加数据")
-                .setName("添加数据")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
-                        "action":"create",
-                        "key":"",
-                        "value":""
+                        "action":"create"
                     }
                 })
             );
@@ -113,7 +110,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "id":"label",
                         "caption":"标题",
-                        "type":"spin",
+                        "type":"label",
                         "width":"11em"
                     },
                     {
@@ -161,6 +158,54 @@ xui.Class('App', 'xui.Module',{
                         "args":[ ],
                         "method":"checkValid",
                         "event":1
+                    },
+                    {
+                        "desc":"调用api",
+                        "type":"control",
+                        "target":"添加数据",
+                        "args":[ ],
+                        "method":"invoke",
+                        "onOK":0,
+                        "onKO":1,
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail"
+                    },
+                    {
+                        "desc":"添加数据",
+                        "type":"control",
+                        "target":"xui_ui_treegrid2",
+                        "args":[
+                            "{page.xui_ui_panel4.getSetFormValues()}",
+                            null,
+                            null,
+                            false
+                        ],
+                        "method":"insertRows"
+                    },
+                    {
+                        "desc":"清除表单",
+                        "type":"control",
+                        "target":"xui_ui_group1",
+                        "args":[ ],
+                        "method":"formClear"
+                    },
+                    {
+                        "desc":"作为最后一个",
+                        "type":"control",
+                        "target":"xui_ui_treegrid2",
+                        "args":[
+                            ""
+                        ],
+                        "method":"setActiveRow",
+                        "conditions":[
+                            {
+                                "left":"{temp.okData}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "timeout":0,
+                        "resetid":""
                     }
                 ])
             );
@@ -168,6 +213,7 @@ xui.Class('App', 'xui.Module',{
             host.xui_ui_group1.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"xui_ui_input3")
+                .setName("key")
                 .setRequired(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
@@ -180,6 +226,7 @@ xui.Class('App', 'xui.Module',{
             host.xui_ui_group1.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"xui_ui_input4")
+                .setName("value")
                 .setRequired(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
