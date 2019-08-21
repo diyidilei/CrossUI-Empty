@@ -254,10 +254,10 @@ xui.Class('App', 'xui.Module',{
                         "target":"添加数据",
                         "args":[ ],
                         "method":"invoke",
-                        "onOK":0,
-                        "onKO":1,
                         "okFlag":"_DI_succeed",
-                        "koFlag":"_DI_fail"
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1
                     },
                     {
                         "desc":"添加数据",
@@ -281,7 +281,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"清除表单",
                         "type":"control",
-                        "target":"xui_ui_group1",
+                        "target":"更新Group",
                         "args":[ ],
                         "method":"formClear"
                     },
