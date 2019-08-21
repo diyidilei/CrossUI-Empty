@@ -76,6 +76,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"add_data")
+                .setName("add_data")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -83,7 +85,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -304,7 +305,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"清除表单",
                         "type":"control",
-                        "target":"更新Group",
+                        "target":"add_group",
                         "args":[ ],
                         "method":"formClear"
                     },
