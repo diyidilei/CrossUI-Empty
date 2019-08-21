@@ -36,6 +36,39 @@ xui.Class('App', 'xui.Module',{
                         "action":"getlist"
                     }
                 })
+                .beforeData([
+                    {
+                        "desc":"数据错误",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}",
+                            ""
+                        ],
+                        "method":"alert",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"defined",
+                                "right":""
+                            }
+                        ],
+                        "onOK":2,
+                        "return":false
+                    }
+                ])
+                .onError([
+                    {
+                        "desc":"动作 1",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "失败了",
+                            "没想到我们失败了"
+                        ],
+                        "method":"pop"
+                    }
+                ])
             );
             
             append(
@@ -138,6 +171,21 @@ xui.Class('App', 'xui.Module',{
                     }
                 ]
             }
+        },
+        events:{
+            "onReady":[
+                {
+                    "desc":"加载数据",
+                    "type":"control",
+                    "target":"api_1",
+                    "args":[ ],
+                    "method":"invoke",
+                    "onOK":0,
+                    "onKO":1,
+                    "okFlag":"_DI_succeed",
+                    "koFlag":"_DI_fail"
+                }
+            ]
         }
         /*,
         // To determine how properties affects this module
