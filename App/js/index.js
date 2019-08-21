@@ -85,6 +85,24 @@ xui.Class('App', 'xui.Module',{
                         "value":""
                     }
                 })
+                .beforeData([
+                    {
+                        "desc":"动作 1",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"pop",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ]
+                    }
+                ])
             );
             
             append(
