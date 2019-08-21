@@ -97,7 +97,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "id":"label",
                         "caption":"标题",
-                        "type":"label",
+                        "type":"spin",
                         "width":"11em"
                     },
                     {
