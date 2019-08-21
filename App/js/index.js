@@ -314,7 +314,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"表单验证",
                         "type":"control",
-                        "target":"xui_ui_group1",
+                        "target":"更新Group",
                         "args":[ ],
                         "method":"checkValid",
                         "event":1
