@@ -21,6 +21,24 @@ xui.Class('App', 'xui.Module',{
             var host=this, children=[], append=function(child){children.push(child.get(0));};
             
             append(
+                xui.create("xui.APICaller")
+                .setHost(host,"api_1")
+                .setResponseCallback([
+                    {
+                        "type":"host",
+                        "name":"refreshGrid"
+                    }
+                ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"getlist"
+                    }
+                })
+            );
+            
+            append(
                 xui.create("xui.UI.Panel")
                 .setHost(host,"xui_ui_panel4")
                 .setDock("none")
@@ -37,6 +55,8 @@ xui.Class('App', 'xui.Module',{
                 .setDirtyMark(false)
                 .setLeft("0em")
                 .setTop("0em")
+                .setWidth("23.166666666666668em")
+                .setHeight("22.416666666666668em")
                 .setEditable(true)
                 .setRowHandler(false)
                 .setHeader([
@@ -63,6 +83,61 @@ xui.Class('App', 'xui.Module',{
         customAppend : function(parent, subId, left, top){
             // "return false" will cause all the internal UI controls will be added to the parent panel
             return false;
+        },
+        functions:{
+            "refreshGrid":{
+                "desc":"",
+                "params":[
+                    {
+                        "id":"response",
+                        "type":"String",
+                        "desc":""
+                    }
+                ],
+                "actions":[
+                    {
+                        "desc":"清除数据",
+                        "type":"control",
+                        "target":"xui_ui_treegrid2",
+                        "args":[ ],
+                        "method":"removeAllRows"
+                    },
+                    {
+                        "desc":"添加数据",
+                        "type":"control",
+                        "target":"xui_ui_treegrid2",
+                        "args":[
+                            "{args[0].data}",
+                            null,
+                            null,
+                            false
+                        ],
+                        "method":"insertRows"
+                    }
+                ]
+            },
+            "onerror":{
+                "desc":"",
+                "params":[
+                    {
+                        "id":"message",
+                        "type":"String",
+                        "desc":""
+                    }
+                ],
+                "actions":[
+                    {
+                        "desc":"alert",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[0]}"
+                        ],
+                        "method":"alert",
+                        "onOK":2
+                    }
+                ]
+            }
         }
         /*,
         // To determine how properties affects this module
