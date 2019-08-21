@@ -76,6 +76,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"添加数据")
+                .setName("添加数据")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
