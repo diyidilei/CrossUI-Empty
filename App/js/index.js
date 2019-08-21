@@ -161,29 +161,6 @@ xui.Class('App', 'xui.Module',{
                         "args":[ ],
                         "method":"checkValid",
                         "event":1
-                    },
-                    {
-                        "desc":"调用api",
-                        "type":"control",
-                        "target":"添加数据",
-                        "args":[ ],
-                        "method":"invoke",
-                        "onOK":0,
-                        "onKO":1,
-                        "okFlag":"_DI_succeed",
-                        "koFlag":"_DI_fail"
-                    },
-                    {
-                        "desc":"添加行",
-                        "type":"control",
-                        "target":"xui_ui_treegrid2",
-                        "args":[
-                            undefined,
-                            null,
-                            null,
-                            false
-                        ],
-                        "method":"insertRows"
                     }
                 ])
             );
