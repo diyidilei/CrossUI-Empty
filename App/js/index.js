@@ -108,6 +108,39 @@ xui.Class('App', 'xui.Module',{
             );
             
             append(
+                xui.create("xui.APICaller")
+                .setHost(host,"更新数据")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"update",
+                        "key":"",
+                        "value":""
+                    }
+                })
+                .beforeData([
+                    {
+                        "desc":"动作 1",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"pop",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "return":false
+                    }
+                ])
+            );
+            
+            append(
                 xui.create("xui.UI.Panel")
                 .setHost(host,"xui_ui_panel4")
                 .setDock("none")
@@ -156,7 +189,7 @@ xui.Class('App', 'xui.Module',{
             
             append(
                 xui.create("xui.UI.Group")
-                .setHost(host,"xui_ui_group1")
+                .setHost(host,"添加Group")
                 .setLeft("32.5em")
                 .setTop("10.833333333333334em")
                 .setWidth("21.666666666666668em")
@@ -164,7 +197,7 @@ xui.Class('App', 'xui.Module',{
                 .setCaption("添加")
             );
             
-            host.xui_ui_group1.append(
+            host.添加Group.append(
                 xui.create("xui.UI.Button")
                 .setHost(host,"xui_ui_button4")
                 .setDirtyMark(false)
@@ -176,9 +209,9 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"表单验证",
                         "type":"control",
-                        "target":"xui_ui_group1",
+                        "target":"添加Group",
                         "args":[ ],
-                        "method":"checkValid",
+                        "method":"checkRequired",
                         "event":1
                     },
                     {
@@ -232,7 +265,7 @@ xui.Class('App', 'xui.Module',{
                 ])
             );
             
-            host.xui_ui_group1.append(
+            host.添加Group.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"xui_ui_input3")
                 .setName("key")
@@ -245,9 +278,102 @@ xui.Class('App', 'xui.Module',{
                 .setLabelCaption("标题")
             );
             
-            host.xui_ui_group1.append(
+            host.添加Group.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"xui_ui_input4")
+                .setName("value")
+                .setRequired(true)
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("4.25em")
+                .setWidth("19.666666666666668em")
+                .setLabelSize("8em")
+                .setLabelCaption("内容")
+            );
+            
+            append(
+                xui.create("xui.UI.Group")
+                .setHost(host,"更新Group")
+                .setLeft("34.166666666666664em")
+                .setTop("25em")
+                .setWidth("21.666666666666668em")
+                .setHeight("12.5em")
+                .setCaption("更新")
+            );
+            
+            host.更新Group.append(
+                xui.create("xui.UI.Button")
+                .setHost(host,"xui_ui_button18")
+                .setDirtyMark(false)
+                .setLeft("6.583333333333333em")
+                .setTop("7.583333333333333em")
+                .setWidth("7em")
+                .setCaption("更新")
+                .onClick([
+                    {
+                        "desc":"表单验证",
+                        "type":"control",
+                        "target":"xui_ui_group1",
+                        "args":[ ],
+                        "method":"checkValid",
+                        "event":1
+                    },
+                    {
+                        "desc":"调用api",
+                        "type":"control",
+                        "target":"更新数据",
+                        "args":[ ],
+                        "method":"invoke",
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1
+                    },
+                    {
+                        "desc":"更新数据",
+                        "type":"control",
+                        "target":"xui_ui_treegrid2",
+                        "args":[
+                            "",
+                            "{page.xui_ui_panel4.getSetFormValues()}"
+                        ],
+                        "method":"updateRow",
+                        "conditions":[
+                            {
+                                "left":"{temp.okData}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "timeout":0,
+                        "resetid":""
+                    },
+                    {
+                        "desc":"清除表单",
+                        "type":"control",
+                        "target":"xui_ui_group1",
+                        "args":[ ],
+                        "method":"formClear"
+                    }
+                ])
+            );
+            
+            host.更新Group.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"xui_ui_input43")
+                .setName("key")
+                .setRequired(true)
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("0.9166666666666666em")
+                .setWidth("19.666666666666668em")
+                .setLabelSize("8em")
+                .setLabelCaption("标题")
+            );
+            
+            host.更新Group.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"xui_ui_input44")
                 .setName("value")
                 .setRequired(true)
                 .setDirtyMark(false)
