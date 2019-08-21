@@ -142,6 +142,37 @@ xui.Class('App', 'xui.Module',{
             );
             
             append(
+                xui.create("xui.APICaller")
+                .setHost(host,"删除")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"delete"
+                    }
+                })
+                .beforeData([
+                    {
+                        "desc":"动作 1",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"pop",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "return":false
+                    }
+                ])
+            );
+            
+            append(
                 xui.create("xui.UI.Panel")
                 .setHost(host,"xui_ui_panel4")
                 .setDock("none")
@@ -180,7 +211,7 @@ xui.Class('App', 'xui.Module',{
             
             append(
                 xui.create("xui.UI.HTMLButton")
-                .setHost(host,"xui_ui_htmlbutton7")
+                .setHost(host,"btn_delete")
                 .setLeft("40em")
                 .setTop("5.833333333333333em")
                 .setWidth("9.833333333333334em")
