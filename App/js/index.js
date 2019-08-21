@@ -23,13 +23,14 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_1")
+                .setName("api_1")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setResponseCallback([
                     {
                         "type":"host",
                         "name":"refreshGrid"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -183,6 +184,17 @@ xui.Class('App', 'xui.Module',{
                         "加载数据"
                     ],
                     "method":"pop",
+                    "okFlag":"_DI_succeed",
+                    "koFlag":"_DI_fail"
+                },
+                {
+                    "desc":"获取数据",
+                    "type":"control",
+                    "target":"api_1",
+                    "args":[ ],
+                    "method":"invoke",
+                    "onOK":0,
+                    "onKO":1,
                     "okFlag":"_DI_succeed",
                     "koFlag":"_DI_fail"
                 }
