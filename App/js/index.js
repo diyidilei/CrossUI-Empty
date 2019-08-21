@@ -117,7 +117,13 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"更新数据")
-                .setName("更新数据")
+                .setRequestDataSource([
+                    {
+                        "type":"form",
+                        "name":"更新Group",
+                        "path":"paras"
+                    }
+                ])
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -151,7 +157,6 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"删除")
-                .setName("删除")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
