@@ -256,15 +256,6 @@ xui.Class('App', 'xui.Module',{
                             "{page.xui_ui_treegrid2.getRowMap()}"
                         ],
                         "method":"setFormValues"
-                    },
-                    {
-                        "desc":"弹窗",
-                        "type":"other",
-                        "target":"msg",
-                        "args":[
-                            "{page.xui_ui_treegrid2.getRowMap()}"
-                        ],
-                        "method":"echo"
                     }
                 ])
             );
