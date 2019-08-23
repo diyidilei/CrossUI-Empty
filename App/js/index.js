@@ -211,7 +211,7 @@ xui.Class('App', 'xui.Module',{
             
             host.xui_ui_panel4.append(
                 xui.create("xui.UI.TreeGrid")
-                .setHost(host,"xui_ui_treegrid2")
+                .setHost(host,"treegrid")
                 .setDirtyMark(false)
                 .setLeft("0em")
                 .setTop("0em")
@@ -311,9 +311,9 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"添加数据",
                         "type":"control",
-                        "target":"xui_ui_treegrid2",
+                        "target":"treegrid",
                         "args":[
-                            "{page.add_group.getSetFormValues()}",
+                            "{page.add_group.getFormValues()}",
                             null,
                             null,
                             false
