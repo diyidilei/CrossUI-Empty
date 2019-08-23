@@ -130,15 +130,14 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"updata")
-                .setName("updata")
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
-                        "name":"更新Group",
-                        "path":""
+                        "name":"update_Group",
+                        "path":"paras"
                     }
                 ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -169,7 +168,6 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"del_data")
-                .setName("del_data")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -233,6 +231,31 @@ xui.Class('App', 'xui.Module',{
                         "width":"11em"
                     }
                 ])
+                .afterRowActive([
+                    {
+                        "desc":"激活删除按钮",
+                        "type":"control",
+                        "target":"btn_delete",
+                        "args":[ ],
+                        "method":"enable"
+                    },
+                    {
+                        "desc":"激活更新按钮",
+                        "type":"control",
+                        "target":"update_btn",
+                        "args":[ ],
+                        "method":"enable"
+                    },
+                    {
+                        "desc":"更新表单",
+                        "type":"control",
+                        "target":"update_Group",
+                        "args":[
+                            "{page.xui_ui_treegrid2.getRowMap()}"
+                        ],
+                        "method":"setFormValues"
+                    }
+                ])
             );
             
             append(
@@ -257,7 +280,7 @@ xui.Class('App', 'xui.Module',{
             
             host.add_group.append(
                 xui.create("xui.UI.Button")
-                .setHost(host,"xui_ui_button4")
+                .setHost(host,"add_btn")
                 .setDirtyMark(false)
                 .setLeft("6.583333333333333em")
                 .setTop("7.583333333333333em")
@@ -282,16 +305,6 @@ xui.Class('App', 'xui.Module',{
                         "koFlag":"_DI_fail",
                         "onOK":0,
                         "onKO":1
-                    },
-                    {
-                        "desc":"动作 6",
-                        "type":"other",
-                        "target":"msg",
-                        "args":[
-                            "fasdf",
-                            "{page.add_group.getSetFormValues()}"
-                        ],
-                        "method":"pop"
                     },
                     {
                         "desc":"添加数据",
@@ -342,7 +355,7 @@ xui.Class('App', 'xui.Module',{
             
             host.add_group.append(
                 xui.create("xui.UI.Input")
-                .setHost(host,"xui_ui_input3")
+                .setHost(host,"ikey")
                 .setName("key")
                 .setRequired(true)
                 .setDirtyMark(false)
@@ -355,7 +368,7 @@ xui.Class('App', 'xui.Module',{
             
             host.add_group.append(
                 xui.create("xui.UI.Input")
-                .setHost(host,"xui_ui_input4")
+                .setHost(host,"iinput")
                 .setName("value")
                 .setRequired(true)
                 .setDirtyMark(false)
@@ -378,7 +391,7 @@ xui.Class('App', 'xui.Module',{
             
             host.update_Group.append(
                 xui.create("xui.UI.Button")
-                .setHost(host,"xui_ui_button18")
+                .setHost(host,"update_btn")
                 .setDirtyMark(false)
                 .setLeft("6.583333333333333em")
                 .setTop("7.583333333333333em")
@@ -421,7 +434,7 @@ xui.Class('App', 'xui.Module',{
             
             host.update_Group.append(
                 xui.create("xui.UI.Input")
-                .setHost(host,"xui_ui_input43")
+                .setHost(host,"ikey1")
                 .setName("key")
                 .setRequired(true)
                 .setDirtyMark(false)
@@ -434,7 +447,7 @@ xui.Class('App', 'xui.Module',{
             
             host.update_Group.append(
                 xui.create("xui.UI.Input")
-                .setHost(host,"xui_ui_input44")
+                .setHost(host,"iinput1")
                 .setName("value")
                 .setRequired(true)
                 .setDirtyMark(false)
