@@ -130,6 +130,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"updata")
+                .setName("updata")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -137,7 +139,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -168,6 +169,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"del_data")
+                .setName("del_data")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -254,6 +256,16 @@ xui.Class('App', 'xui.Module',{
                             "{page.xui_ui_treegrid2.getRowMap()}"
                         ],
                         "method":"setFormValues"
+                    },
+                    {
+                        "desc":"弹窗",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "发生大幅",
+                            "{page.xui_ui_treegrid2.getRowMap()}"
+                        ],
+                        "method":"pop"
                     }
                 ])
             );
