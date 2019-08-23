@@ -337,7 +337,7 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"作为最后一个",
                         "type":"control",
-                        "target":"xui_ui_treegrid2",
+                        "target":"treegrid",
                         "args":[
                             "{-1}"
                         ],
