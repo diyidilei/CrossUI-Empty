@@ -262,10 +262,9 @@ xui.Class('App', 'xui.Module',{
                         "type":"other",
                         "target":"msg",
                         "args":[
-                            "发生大幅",
                             "{page.xui_ui_treegrid2.getRowMap()}"
                         ],
-                        "method":"pop"
+                        "method":"echo"
                     }
                 ])
             );
