@@ -82,6 +82,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_del")
+                .setName("api_del")
                 .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
@@ -369,6 +370,27 @@ xui.Class('App', 'xui.Module',{
                         "onKO":1,
                         "okFlag":"_DI_succeed",
                         "koFlag":"_DI_fail"
+                    },
+                    {
+                        "desc":"删除按钮禁用",
+                        "type":"control",
+                        "target":"btn_delete",
+                        "args":[ ],
+                        "method":"disable"
+                    },
+                    {
+                        "desc":"修改按钮禁用",
+                        "type":"control",
+                        "target":"btn_amend",
+                        "args":[ ],
+                        "method":"disable"
+                    },
+                    {
+                        "desc":"修改表单清空",
+                        "type":"control",
+                        "target":"group_amend",
+                        "args":[ ],
+                        "method":"formClear"
                     }
                 ])
             );
