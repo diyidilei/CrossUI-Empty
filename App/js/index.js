@@ -21,6 +21,24 @@ xui.Class('App', 'xui.Module',{
             var host=this, children=[], append=function(child){children.push(child.get(0));};
             
             append(
+                xui.create("xui.APICaller")
+                .setHost(host,"api_init")
+                .setResponseCallback([
+                    {
+                        "type":"host",
+                        "name":"refreshGrid"
+                    }
+                ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"getlist"
+                    }
+                })
+            );
+            
+            append(
                 xui.create("xui.UI.Panel")
                 .setHost(host,"panel")
                 .setDock("none")
@@ -167,14 +185,14 @@ xui.Class('App', 'xui.Module',{
                     {
                         "desc":"清除数据",
                         "type":"control",
-                        "target":"xui_ui_treegrid2",
+                        "target":"treegrid",
                         "args":[ ],
                         "method":"removeAllRows"
                     },
                     {
                         "desc":"添加数据",
                         "type":"control",
-                        "target":"xui_ui_treegrid2",
+                        "target":"treegrid",
                         "args":[
                             "{args[0].data}",
                             null,
@@ -208,7 +226,21 @@ xui.Class('App', 'xui.Module',{
                 ]
             }
         },
-        events:{ },
+        events:{
+            "onReady":[
+                {
+                    "desc":"调用初始化api",
+                    "type":"control",
+                    "target":"api_init",
+                    "args":[ ],
+                    "method":"invoke",
+                    "onOK":0,
+                    "onKO":1,
+                    "okFlag":"_DI_succeed",
+                    "koFlag":"_DI_fail"
+                }
+            ]
+        },
         /**
          * 在得到数据之前调用.  返回false可以阻止进一步动作
          * @method beforeData [xui.APICaller event]
