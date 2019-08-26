@@ -20,6 +20,127 @@ xui.Class('App', 'xui.Module',{
             // [[Code created by CrossUI RAD Studio
             var host=this, children=[], append=function(child){children.push(child.get(0));};
             
+            append(
+                xui.create("xui.UI.Panel")
+                .setHost(host,"panel")
+                .setDock("none")
+                .setLeft("5.833333333333333em")
+                .setTop("8.333333333333334em")
+                .setWidth("22.5em")
+                .setHeight("27.5em")
+                .setCaption("数据表格")
+            );
+            
+            host.panel.append(
+                xui.create("xui.UI.TreeGrid")
+                .setHost(host,"treegrid")
+                .setDirtyMark(false)
+                .setLeft("0em")
+                .setTop("0em")
+                .setEditable(true)
+                .setRowHandler(false)
+            );
+            
+            append(
+                xui.create("xui.UI.Group")
+                .setHost(host,"group_add")
+                .setLeft("35.833333333333336em")
+                .setTop("27.5em")
+                .setWidth("23.333333333333332em")
+                .setHeight("13.333333333333334em")
+                .setCaption("新增数据")
+            );
+            
+            host.group_add.append(
+                xui.create("xui.UI.Button")
+                .setHost(host,"btn_add")
+                .setDirtyMark(false)
+                .setLeft("5.75em")
+                .setTop("7.583333333333333em")
+                .setWidth("10.666666666666666em")
+                .setHeight("2.8333333333333335em")
+                .setCaption("新增数据")
+            );
+            
+            host.group_add.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"ikey1")
+                .setName("key")
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("0.9166666666666666em")
+                .setWidth("18em")
+                .setLabelSize("8em")
+                .setLabelCaption("key")
+            );
+            
+            host.group_add.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"ivalue1")
+                .setName("value")
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("4.25em")
+                .setWidth("18em")
+                .setLabelSize("8em")
+                .setLabelCaption("value")
+            );
+            
+            append(
+                xui.create("xui.UI.Group")
+                .setHost(host,"group_amend")
+                .setLeft("35.833333333333336em")
+                .setTop("12.5em")
+                .setWidth("23em")
+                .setHeight("12.5em")
+                .setCaption("修改数据")
+                .setToggleBtn(false)
+            );
+            
+            host.group_amend.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"ikey")
+                .setName("key")
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("0.9166666666666666em")
+                .setWidth("18.833333333333332em")
+                .setLabelSize("8em")
+                .setLabelCaption("key")
+            );
+            
+            host.group_amend.append(
+                xui.create("xui.UI.Input")
+                .setHost(host,"ivalue")
+                .setName("value")
+                .setDirtyMark(false)
+                .setLeft("-0.08333333333333333em")
+                .setTop("4.25em")
+                .setWidth("18.833333333333332em")
+                .setLabelSize("8em")
+                .setLabelCaption("value")
+            );
+            
+            host.group_amend.append(
+                xui.create("xui.UI.HTMLButton")
+                .setHost(host,"btn_amend")
+                .setLeft("6.583333333333333em")
+                .setTop("7.5em")
+                .setWidth("9.833333333333334em")
+                .setHeight("2.6666666666666665em")
+                .setCaption("修改数据")
+            );
+            
+            append(
+                xui.create("xui.UI.HTMLButton")
+                .setHost(host,"btn_delete")
+                .setLeft("38.333333333333336em")
+                .setTop("7.5em")
+                .setWidth("13.166666666666666em")
+                .setHeight("2.6666666666666665em")
+                .setCaption("删除数据")
+            );
+            
             return children;
             // ]]Code created by CrossUI RAD Studio
         },
