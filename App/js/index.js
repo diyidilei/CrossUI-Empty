@@ -23,13 +23,14 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_init")
+                .setName("api_init")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setResponseCallback([
                     {
                         "type":"host",
                         "name":"refreshGrid"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -57,6 +58,20 @@ xui.Class('App', 'xui.Module',{
                 .setTop("0em")
                 .setEditable(true)
                 .setRowHandler(false)
+                .setHeader([
+                    {
+                        "id":"key",
+                        "caption":"Key",
+                        "type":"label",
+                        "width":"10.6em"
+                    },
+                    {
+                        "id":"value",
+                        "caption":"Value",
+                        "type":"label",
+                        "width":"10.6em"
+                    }
+                ])
             );
             
             append(
