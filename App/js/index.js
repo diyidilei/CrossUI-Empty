@@ -62,6 +62,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_amend")
+                .setName("api_amend")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -69,11 +71,22 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
                         "action":"update"
+                    }
+                })
+            );
+            
+            append(
+                xui.create("xui.APICaller")
+                .setHost(host,"api_del")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"delete"
                     }
                 })
             );
@@ -278,20 +291,20 @@ xui.Class('App', 'xui.Module',{
                         "method":"invoke",
                         "okFlag":"_DI_succeed",
                         "koFlag":"_DI_fail",
+                        "event":1,
                         "onOK":0,
-                        "onKO":1,
-                        "event":1
+                        "onKO":1
                     },
                     {
-                        "desc":"重新加载数据",
+                        "desc":"获取数据api",
                         "type":"control",
                         "target":"api_init",
                         "args":[ ],
                         "method":"invoke",
-                        "onOK":0,
-                        "onKO":1,
                         "okFlag":"_DI_succeed",
-                        "koFlag":"_DI_fail"
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1
                     }
                 ])
             );
@@ -305,6 +318,59 @@ xui.Class('App', 'xui.Module',{
                 .setWidth("13.166666666666666em")
                 .setHeight("2.6666666666666665em")
                 .setCaption("删除数据")
+                .onClick([
+                    {
+                        "desc":"设置key值",
+                        "type":"other",
+                        "target":"var",
+                        "args":[
+                            "key",
+                            "{page.ikey.getValue()}"
+                        ],
+                        "method":"temp",
+                        "event":1
+                    },
+                    {
+                        "desc":"设置api配置",
+                        "type":"control",
+                        "target":"api_del",
+                        "args":[
+                            {
+                                "queryArgs":{
+                                    "key":"DBProcess",
+                                    "paras":{
+                                        "action":"delete",
+                                        "key":"{temp.key}"
+                                    }
+                                }
+                            },
+                            { }
+                        ],
+                        "method":"setProperties"
+                    },
+                    {
+                        "desc":"调用api",
+                        "type":"control",
+                        "target":"api_del",
+                        "args":[ ],
+                        "method":"invoke",
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1
+                    },
+                    {
+                        "desc":"获取数据api",
+                        "type":"control",
+                        "target":"api_init",
+                        "args":[ ],
+                        "method":"invoke",
+                        "onOK":0,
+                        "onKO":1,
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail"
+                    }
+                ])
             );
             
             return children;
