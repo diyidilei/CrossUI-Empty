@@ -42,6 +42,8 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.APICaller")
                 .setHost(host,"api_add")
+                .setName("api_add")
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setRequestDataSource([
                     {
                         "type":"form",
@@ -49,7 +51,6 @@ xui.Class('App', 'xui.Module',{
                         "path":"paras"
                     }
                 ])
-                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
                 .setQueryArgs({
                     "key":"DBProcess",
                     "paras":{
@@ -89,6 +90,31 @@ xui.Class('App', 'xui.Module',{
                         "caption":"Value",
                         "type":"label",
                         "width":"10.583333333333334em"
+                    }
+                ])
+                .afterRowActive([
+                    {
+                        "desc":"激活删除按钮",
+                        "type":"control",
+                        "target":"btn_delete",
+                        "args":[ ],
+                        "method":"enable"
+                    },
+                    {
+                        "desc":"激活修改按钮",
+                        "type":"control",
+                        "target":"btn_amend",
+                        "args":[ ],
+                        "method":"enable"
+                    },
+                    {
+                        "desc":"设置表单数据",
+                        "type":"control",
+                        "target":"group_amend",
+                        "args":[
+                            "{page.treegrid.getRowMap()}"
+                        ],
+                        "method":"setFormValues"
                     }
                 ])
             );
