@@ -37,6 +37,40 @@ xui.Class('App', 'xui.Module',{
                         "action":"getlist"
                     }
                 })
+                .beforeData([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"alert",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "onOK":2,
+                        "return":false
+                    }
+                ])
+                .onError([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"callback",
+                        "args":[
+                            "{page.functions.onerror}",
+                            undefined,
+                            undefined,
+                            "{args[1]}"
+                        ],
+                        "method":"call"
+                    }
+                ])
             );
             
             append(
@@ -57,6 +91,40 @@ xui.Class('App', 'xui.Module',{
                         "action":"create"
                     }
                 })
+                .beforeData([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"alert",
+                        "onOK":2,
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "return":false
+                    }
+                ])
+                .onError([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"callback",
+                        "args":[
+                            "{page.functions.onerror}",
+                            undefined,
+                            undefined,
+                            "{args[1]}"
+                        ],
+                        "method":"call"
+                    }
+                ])
             );
             
             append(
@@ -77,6 +145,42 @@ xui.Class('App', 'xui.Module',{
                         "action":"update"
                     }
                 })
+                .beforeData([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"alert",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "okFlag":"_confirm_yes",
+                        "koFlag":"_confirm_no",
+                        "onOK":2,
+                        "return":false
+                    }
+                ])
+                .onError([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"callback",
+                        "args":[
+                            "{page.functions.onerror}",
+                            undefined,
+                            undefined,
+                            "{args[1]}"
+                        ],
+                        "method":"call"
+                    }
+                ])
             );
             
             append(
@@ -90,6 +194,40 @@ xui.Class('App', 'xui.Module',{
                         "action":"delete"
                     }
                 })
+                .beforeData([
+                    {
+                        "desc":"异常处理",
+                        "type":"other",
+                        "target":"msg",
+                        "args":[
+                            "{args[1].error.message}"
+                        ],
+                        "method":"alert",
+                        "conditions":[
+                            {
+                                "left":"{args[1].error}",
+                                "symbol":"non-empty",
+                                "right":""
+                            }
+                        ],
+                        "onOK":2,
+                        "return":false
+                    }
+                ])
+                .onError([
+                    {
+                        "desc":"动作 1",
+                        "type":"other",
+                        "target":"callback",
+                        "args":[
+                            "{page.functions.onerror}",
+                            undefined,
+                            undefined,
+                            "{args[1]}"
+                        ],
+                        "method":"call"
+                    }
+                ])
             );
             
             append(
