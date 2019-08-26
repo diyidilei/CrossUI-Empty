@@ -60,6 +60,25 @@ xui.Class('App', 'xui.Module',{
             );
             
             append(
+                xui.create("xui.APICaller")
+                .setHost(host,"api_amend")
+                .setRequestDataSource([
+                    {
+                        "type":"form",
+                        "name":"group_amend",
+                        "path":"paras"
+                    }
+                ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"update"
+                    }
+                })
+            );
+            
+            append(
                 xui.create("xui.UI.Panel")
                 .setHost(host,"panel")
                 .setDock("none")
@@ -250,6 +269,31 @@ xui.Class('App', 'xui.Module',{
                 .setWidth("9.833333333333334em")
                 .setHeight("2.6666666666666665em")
                 .setCaption("修改数据")
+                .onClick([
+                    {
+                        "desc":"调用更新api",
+                        "type":"control",
+                        "target":"api_amend",
+                        "args":[ ],
+                        "method":"invoke",
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1,
+                        "event":1
+                    },
+                    {
+                        "desc":"重新加载数据",
+                        "type":"control",
+                        "target":"api_init",
+                        "args":[ ],
+                        "method":"invoke",
+                        "onOK":0,
+                        "onKO":1,
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail"
+                    }
+                ])
             );
             
             append(
