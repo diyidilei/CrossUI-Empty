@@ -101,6 +101,7 @@ xui.Class('App', 'xui.Module',{
                 xui.create("xui.UI.Input")
                 .setHost(host,"ikey")
                 .setName("key")
+                .setReadonly(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
                 .setTop("0.9166666666666666em")
@@ -124,6 +125,7 @@ xui.Class('App', 'xui.Module',{
             host.group_amend.append(
                 xui.create("xui.UI.HTMLButton")
                 .setHost(host,"btn_amend")
+                .setDisabled(true)
                 .setLeft("6.583333333333333em")
                 .setTop("7.5em")
                 .setWidth("9.833333333333334em")
@@ -134,6 +136,7 @@ xui.Class('App', 'xui.Module',{
             append(
                 xui.create("xui.UI.HTMLButton")
                 .setHost(host,"btn_delete")
+                .setDisabled(true)
                 .setLeft("38.333333333333336em")
                 .setTop("7.5em")
                 .setWidth("13.166666666666666em")
