@@ -337,6 +337,7 @@ xui.Class('App', 'xui.Module',{
                         "target":"api_del",
                         "args":[
                             {
+                                "queryOptions":{ },
                                 "queryArgs":{
                                     "key":"DBProcess",
                                     "paras":{
@@ -366,10 +367,10 @@ xui.Class('App', 'xui.Module',{
                         "target":"api_init",
                         "args":[ ],
                         "method":"invoke",
-                        "onOK":0,
-                        "onKO":1,
                         "okFlag":"_DI_succeed",
-                        "koFlag":"_DI_fail"
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1
                     },
                     {
                         "desc":"删除按钮禁用",
