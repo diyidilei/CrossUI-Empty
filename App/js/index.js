@@ -84,21 +84,7 @@ xui.Class('App', 'xui.Module',{
                 ]
             }
         },
-        events:{
-            "onReady":[
-                {
-                    "desc":"获取数据",
-                    "type":"control",
-                    "target":"初始化数据",
-                    "args":[ ],
-                    "method":"invoke",
-                    "okFlag":"_DI_succeed",
-                    "koFlag":"_DI_fail",
-                    "onOK":0,
-                    "onKO":1
-                }
-            ]
-        },
+        events:{ },
         /**
          * 在得到数据之前调用.  返回false可以阻止进一步动作
          * @method beforeData [xui.APICaller event]
