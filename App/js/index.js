@@ -40,6 +40,25 @@ xui.Class('App', 'xui.Module',{
             );
             
             append(
+                xui.create("xui.APICaller")
+                .setHost(host,"api_add")
+                .setRequestDataSource([
+                    {
+                        "type":"form",
+                        "name":"group_add",
+                        "path":"paras"
+                    }
+                ])
+                .setQueryURL("https://www.crossui.com/demo/CRUD/request.php")
+                .setQueryArgs({
+                    "key":"DBProcess",
+                    "paras":{
+                        "action":"create"
+                    }
+                })
+            );
+            
+            append(
                 xui.create("xui.UI.Panel")
                 .setHost(host,"panel")
                 .setDock("none")
@@ -63,13 +82,13 @@ xui.Class('App', 'xui.Module',{
                         "id":"key",
                         "caption":"Key",
                         "type":"label",
-                        "width":"10.6em"
+                        "width":"10.583333333333334em"
                     },
                     {
                         "id":"value",
                         "caption":"Value",
                         "type":"label",
-                        "width":"10.6em"
+                        "width":"10.583333333333334em"
                     }
                 ])
             );
@@ -93,12 +112,52 @@ xui.Class('App', 'xui.Module',{
                 .setWidth("10.666666666666666em")
                 .setHeight("2.8333333333333335em")
                 .setCaption("新增数据")
+                .onClick([
+                    {
+                        "desc":"表单验证",
+                        "type":"control",
+                        "target":"group_add",
+                        "args":[ ],
+                        "method":"checkValid",
+                        "event":1
+                    },
+                    {
+                        "desc":"调用增加api",
+                        "type":"control",
+                        "target":"api_add",
+                        "args":[ ],
+                        "method":"invoke",
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail",
+                        "onOK":0,
+                        "onKO":1
+                    },
+                    {
+                        "desc":"清空表单",
+                        "type":"control",
+                        "target":"group_add",
+                        "args":[ ],
+                        "method":"formClear"
+                    },
+                    {
+                        "desc":"获取数据api",
+                        "type":"control",
+                        "target":"api_init",
+                        "args":[ ],
+                        "method":"invoke",
+                        "onOK":0,
+                        "onKO":1,
+                        "okFlag":"_DI_succeed",
+                        "koFlag":"_DI_fail"
+                    }
+                ])
             );
             
             host.group_add.append(
                 xui.create("xui.UI.Input")
                 .setHost(host,"ikey1")
                 .setName("key")
+                .setRequired(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
                 .setTop("0.9166666666666666em")
@@ -111,6 +170,7 @@ xui.Class('App', 'xui.Module',{
                 xui.create("xui.UI.Input")
                 .setHost(host,"ivalue1")
                 .setName("value")
+                .setRequired(true)
                 .setDirtyMark(false)
                 .setLeft("-0.08333333333333333em")
                 .setTop("4.25em")
